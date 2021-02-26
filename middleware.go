@@ -59,6 +59,8 @@ func Validate(TeamDomain, ApplicationAUD string, UnauthorizedHandler fiber.Handl
 			} else {
 				println(err.Error())
 			}
+		} else {
+			println("blank")
 		}
 
 		// Return the unauthorized handler if we fall out of this.
