@@ -30,7 +30,7 @@ func main() {
 	app.Get("/", func(ctx *fiber.Ctx) error {
 		user := ctx.Locals("user").(*access.CloudflareAccessUserInfo)
 		_, err := ctx.WriteString(
-			"You are " + user.Email + " (nonce: " + user.Nonce + ", user ID: " + user.UserIdentifier + ")")
+			"You are " + user.Email + " (user ID: " + user.UserIdentifier + ")")
 		return err
 	})
 

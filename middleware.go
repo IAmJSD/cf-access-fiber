@@ -12,9 +12,6 @@ type CloudflareAccessUserInfo struct {
 	// Email is the e-mail address of the authenticated Cloudflare Access user.
 	Email string `json:"email"`
 
-	// Nonce is the unique session ID.
-	Nonce string `json:"nonce"`
-
 	// UserIdentifier is the unique identifier for the authenticated Cloudflare Access user.
 	UserIdentifier string `json:"sub"`
 
