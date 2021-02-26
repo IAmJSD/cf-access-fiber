@@ -45,6 +45,9 @@ func Validate(TeamDomain, ApplicationAUD string, UnauthorizedHandler fiber.Handl
 	return func(ctx *fiber.Ctx) error {
 		// Check the header exists.
 		accessHeader := string(ctx.Request().Header.Peek("Cf-Access-Jwt-Assertion"))
+		ctx.Request().Header.VisitAll(func(key, value []byte) {
+			println(string(key))
+		})
 		if accessHeader != "" {
 			if token, err := verifier.Verify(ctx.Context(), accessHeader); err == nil {
 				// Get the user information.
@@ -56,11 +59,7 @@ func Validate(TeamDomain, ApplicationAUD string, UnauthorizedHandler fiber.Handl
 				// Store the user data and call the function.
 				ctx.Locals("user", &x)
 				return ctx.Next()
-			} else {
-				println(err.Error())
 			}
-		} else {
-			println("blank")
 		}
 
 		// Return the unauthorized handler if we fall out of this.
