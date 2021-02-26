@@ -56,6 +56,8 @@ func Validate(TeamDomain, ApplicationAUD string, UnauthorizedHandler fiber.Handl
 				// Store the user data and call the function.
 				ctx.Locals("user", &x)
 				return ctx.Next()
+			} else {
+				println(err.Error())
 			}
 		}
 
